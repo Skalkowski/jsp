@@ -93,9 +93,9 @@ public final class addDruzyny_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  \t\t<p>Plec:</p>\n");
       out.write("  \t\t");
 
-      		String cos = druzyny.getPlec();
+      		String temp = druzyny.getPlec();
 			for(PlecEnum e: PlecEnum.values()){
-          	if(e.toString().equals(cos))
+          	if(e.toString().equals(temp))
          		out.println("<input type='radio' name='plec' value=" + e.toString() + " CHECKED >" + e.toString() + "<br />");
           	else
              	out.println("<input type='radio' name='plec' value=" + e.toString() + ">" + e.toString() + "<br />");
@@ -103,43 +103,11 @@ public final class addDruzyny_jsp extends org.apache.jasper.runtime.HttpJspBase
       	
       out.write("\n");
       out.write("  \t\t<br/>\n");
-      out.write("\t<p>Zdobyte osiagniecia:\n");
-      out.write("\t");
-
-   	boolean znaleziono = false;
-  	String[] equ = druzyny.getOsiagniecia();
-	for (OsiagnieciaEnum e : OsiagnieciaEnum.values()) {
-   		for (int i = 0; i < equ.length; i++)
-    		if (equ[i].equals(e.toString())) {
-         		out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + " CHECKED>" + e.toString() + "<br /> ");
-                znaleziono = true;
-         	}
-            if (!znaleziono)
-          		out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + ">" + e.toString() + "<br /> ");
-				znaleziono = false;
-         	}
-   	
+      out.write("\t<p>Zdobyte osiagniecia:</p>\n");
+      out.write("\t\n");
       out.write("\n");
-      out.write("\t</p>\n");
       out.write("\t<p>Kraj:<br/>\n");
-      out.write("\t<select size=\"3\" name=\"kraj\" multiple=\"multiple\">\n");
-      out.write("\t");
-
- 		boolean znale = false;
-     	String[] cap = druzyny.getKraj();
-		for (KrajEnum e : KrajEnum.values()) {
-   			for (int i = 0; i < cap.length; i++)
-          		if (cap[i].equals(e.toString())) {
-              		out.print("<option SELECTED value=" + e.toString() + ">" + e.toString() + "</option>");
-                    znale = true;
-           		}
-				if (!znale)
-             		out.print("<option value=" + e.toString() + ">" + e.toString() + "</option>");
-					znale = false;
-
-    	}
- 	
-      out.write("\n");
+      out.write("\t\n");
       out.write(" \t</select>\n");
       out.write(" \t<br/>\n");
       out.write("\t\n");

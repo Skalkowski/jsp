@@ -31,37 +31,10 @@
       	%>
   		<br/>
 	<p>Zdobyte osiagniecia:</p>
-	<%
-  	String[] osia = druzyny.getOsiagniecia();
-	boolean jest = false;
-	for (OsiagnieciaEnum e : OsiagnieciaEnum.values()) {
-   		for (int i = 0; i < osia.length; i++)
-    		if (osia[i].equals(e.toString())) {
-         		out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + " CHECKED>" + e.toString() + "<br /> ");
-                jest = true;
-         	}
-            if (!jest)
-          		out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + ">" + e.toString() + "<br /> ");
-				jest = false;
-         	}
-   	%>
-	<p>Kraj:<br/>
-	<select size="3" name="kraj" multiple="multiple">
-	<%
- 		boolean jest2 = false;
-     	String[] cap = druzyny.getKraj();
-		for (KrajEnum e : KrajEnum.values()) {
-   			for (int i = 0; i < cap.length; i++)
-          		if (cap[i].equals(e.toString())) {
-              		out.print("<option SELECTED value=" + e.toString() + ">" + e.toString() + "</option>");
-                    jest2 = true;
-           		}
-				if (!jest2)
-             		out.print("<option value=" + e.toString() + ">" + e.toString() + "</option>");
-					jest2 = false;
+	
 
-    	}
- 	%>
+	<p>Kraj:<br/>
+	
  	</select>
  	<br/>
 	
