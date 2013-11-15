@@ -1,3 +1,7 @@
+<%@page import="com.example.servletjspdemo.domain.Druzyny.OsiagnieciaEnum"%>
+<%@page import="com.example.servletjspdemo.domain.Druzyny.KrajEnum"%>
+<%@page import="com.example.servletjspdemo.domain.Druzyny.PlecEnum"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,19 +20,19 @@
 <jsp:useBean id="komentarz" class="com.example.servletjspdemo.domain.Druzyny" scope="session" />
 	
 	<h2>Dodanie druzyny</h2>
-	<form action="addDruzyny.jsp" method="get">
+	<form action="getDruzynyTemp.jsp" method="get">
 		kraj: <br/>
-  		<select name="kraj" size="3" multiple = "multiple">
-        <option value="Polska">Polska</option>
-        <option value="Niemcy">Niemcy</option>
-        <option value="Anglia">Anglia</option>
-        <option value="Hiszpania">Hiszpania</option>
-      	</select>
-		
-		
+		<select size="3" name="kraj" multiple="multiple">
+  		<%
+  			for (KrajEnum e: KrajEnum.values())
+  				out.print("<option value=" + e.toString() + ">" + e.toString() + "</option>");
+		%>
+		</select>
 		<br/>Plec druzyny:<br/>
-  		<input type="radio" name="plec" value="meska">Meska druzyna<br/>
-  		<input type="radio" name="plec" value="kobieca">Kobieca druzyna<br/>
+  		<%
+      		for(PlecEnum e: PlecEnum.values())         
+      		out.print("<input type='radio' name='plec' value=" + e.toString() + ">" + e.toString() + "<br />");
+      	%>
 	
 	
 	
@@ -41,11 +45,10 @@
   		
   		
   		Osiagncia:<br/>
-  		<input type="checkbox" name="osiagniecia" value="Mistrzostwo kraju">Mistrzostwo kraju<br/>
-  		<input type="checkbox" name="osiagniecia" value="Puchar kraju">Puchar kraju<br/>
-  		<input type="checkbox" name="osiagniecia" value="Puchar Ligi Europejskiej">Puchar Ligi Europejskiej<br/>
-  		<input type="checkbox" name="osiagniecia" value="Puchar Ligi Mistrzow">Puchar Ligi Mistrzow<br/>
-  		
+  		<%
+    		for(OsiagnieciaEnum e: OsiagnieciaEnum.values())         
+      			out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + ">" + e.toString() +"<br /> ");
+     	%>
   	
   		
   		 <br /> 

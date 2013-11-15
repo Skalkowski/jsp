@@ -1,3 +1,6 @@
+<%@page import="com.example.servletjspdemo.domain.Druzyny.OsiagnieciaEnum"%>
+<%@page import="com.example.servletjspdemo.domain.Druzyny.KrajEnum"%>
+<%@page import="com.example.servletjspdemo.domain.Druzyny.PlecEnum"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,43 +15,66 @@
 <jsp:useBean id="druzyny" class="com.example.servletjspdemo.domain.Druzyny" scope="session" />
 <h2>Dane ktore wprowadziles:</h2>
 	<form action="getDruzynyTemp.jsp" method="get">
-	<p>Nazwa druzyny: ${druzyny.nazwa}</p> 
-	<p>Trener: ${druzyny.trener} </p>
-	<p>Stadion: ${druzyny.stadion}</p> 	
-	<p>Rok założenia: ${druzyny.rok}</p>
-	<p>Plec druzyny: ${druzyny.plec}</p> 
-	<p>Zdobyte osiagniecia:
+		Nazwa druzyny :<input type="text" name="nazwa" value="${druzyny.nazwa}" /><br/>
+  		Trener :<input type="text" name="trener" value="${druzyny.trener}" /><br/>
+  		Stadion :<input type="text" name="stadion" value="${druzyny.stadion}" /> <br/>
+  		Rok zalozenia :<input type="text"  name="rok" value="${druzyny.rok}" /><br/>
+  		<p>Plec:</p>
+  		<%
+      		String temp = druzyny.getPlec();
+			for(PlecEnum e: PlecEnum.values()){
+          	if(e.toString().equals(temp))
+         		out.println("<input type='radio' name='plec' value=" + e.toString() + " CHECKED >" + e.toString() + "<br />");
+          	else
+             	out.println("<input type='radio' name='plec' value=" + e.toString() + ">" + e.toString() + "<br />");
+                                }
+      	%>
+  		<br/>
+	<p>Zdobyte osiagniecia:</p>
 	<%
-	String osiag[] = request.getParameterValues("osiagniecia"); //zwraca wartosci "osiagniecia"
-	if (osiag != null && osiag.length != 0) {
-		for (int i = 0; i < osiag.length; i++) {
-			out.println(osiag[i] + ",");
-		}
-		druzyny.setOsiagniecia(request.getParameterValues("osiagniecia"));
-	}
+  	String[] osia = druzyny.getOsiagniecia();
+	boolean jest = false;
+	for (OsiagnieciaEnum e : OsiagnieciaEnum.values()) {
+   		for (int i = 0; i < osia.length; i++)
+    		if (osia[i].equals(e.toString())) {
+         		out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + " CHECKED>" + e.toString() + "<br /> ");
+                jest = true;
+         	}
+            if (!jest)
+          		out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + ">" + e.toString() + "<br /> ");
+				jest = false;
+         	}
+   	%>
+	<p>Kraj:<br/>
+	<select size="3" name="kraj" multiple="multiple">
+	<%
+ 		boolean jest2 = false;
+     	String[] cap = druzyny.getKraj();
+		for (KrajEnum e : KrajEnum.values()) {
+   			for (int i = 0; i < cap.length; i++)
+          		if (cap[i].equals(e.toString())) {
+              		out.print("<option SELECTED value=" + e.toString() + ">" + e.toString() + "</option>");
+                    jest2 = true;
+           		}
+				if (!jest2)
+             		out.print("<option value=" + e.toString() + ">" + e.toString() + "</option>");
+					jest2 = false;
+
+    	}
+ 	%>
+ 	</select>
+ 	<br/>
 	
-	%>
 	</p>
-	<p>Kraj:
-		<%
-	String kr[] = request.getParameterValues("kraj"); //zwraca wartosci "osiagniecia"
-	if (kr != null && kr.length != 0) {
-		for (int i = 0; i < kr.length; i++) {
-			out.println(kr[i] + ",");
-		}
-		druzyny.setKraj(request.getParameterValues("kraj"));
-	}
-	%>
-	
-	</p>
-	<p>Komentarz: ${druzyny.komentarz}</p>
-	
+	<p>Komentarz:</p>
+	<textarea name="komentarz" rows="10" cols="90" >
+				${druzyny.komentarz}
+	</textarea>
+	<br/>
 	<input type="submit" value="potwierdz">
 	</form>
 	
-	 <form action="getDruzyny.jsp">
-  		<input type="submit" value="Popraw">
-  	</form>
+	
 	
 	<form action="indexdruzyny.jsp">
   		<input type="submit" value="wroc">

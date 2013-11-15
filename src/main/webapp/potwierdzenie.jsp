@@ -23,12 +23,10 @@
 	
 	
 	<p>Komentarz: ${druzyny.komentarz}</p>
-	<form action="potwierdzenie.jsp" method="get">
- 		<input type="submit" value="zatwierdz">  
+	<form action="showAllDruzyny.jsp" method="get">
+		<%storage.add(druzyny); %>
+ 		<input type="submit" value="pokaz wszystko">  
 	</form>
-	 <form action="addDruzyny.jsp">
-  		<input type="submit" value="Popraw">
-  	</form>
 	<form action="indexdruzyny.jsp">
   		<input type="submit" value="wroc">
   	</form>

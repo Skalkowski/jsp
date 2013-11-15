@@ -71,7 +71,7 @@ public final class getDruzynyTemp_jsp extends org.apache.jasper.runtime.HttpJspB
       }
       out.write("\n");
       out.write("<h2>Dane ktore wprowadziles:</h2>\n");
-      out.write("\t<form action=\"showAllDruzyny.jsp\" method=\"get\">\n");
+      out.write("\t\n");
       out.write("\t<p>Nazwa druzyny: ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${druzyny.nazwa}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p> \n");
@@ -99,14 +99,12 @@ public final class getDruzynyTemp_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\t<p>Komentarz: ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${druzyny.komentarz}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\n");
-      out.write("\t\n");
-      out.write("\t");
-storage.add(druzyny); 
-      out.write("\n");
-      out.write("\t\n");
-      out.write("\t<input type=\"submit\" value=\"zobacz wszystki\">\n");
+      out.write("\t<form action=\"potwierdzenie.jsp\" method=\"get\">\n");
+      out.write(" \t\t<input type=\"submit\" value=\"zatwierdz\">  \n");
       out.write("\t</form>\n");
-      out.write("\t\n");
+      out.write("\t <form action=\"addDruzyny.jsp\">\n");
+      out.write("  \t\t<input type=\"submit\" value=\"Popraw\">\n");
+      out.write("  \t</form>\n");
       out.write("\t<form action=\"indexdruzyny.jsp\">\n");
       out.write("  \t\t<input type=\"submit\" value=\"wroc\">\n");
       out.write("  \t</form>\n");

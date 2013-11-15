@@ -3,6 +3,9 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import com.example.servletjspdemo.domain.Druzyny.OsiagnieciaEnum;
+import com.example.servletjspdemo.domain.Druzyny.KrajEnum;
+import com.example.servletjspdemo.domain.Druzyny.PlecEnum;
 
 public final class getDruzyny_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -41,6 +44,10 @@ public final class getDruzyny_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
       out.write("<html>\n");
@@ -106,19 +113,23 @@ public final class getDruzyny_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\t\n");
       out.write("\t<h2>Dodanie druzyny</h2>\n");
-      out.write("\t<form action=\"addDruzyny.jsp\" method=\"get\">\n");
+      out.write("\t<form action=\"getDruzynyTemp.jsp\" method=\"get\">\n");
       out.write("\t\tkraj: <br/>\n");
-      out.write("  \t\t<select name=\"kraj\" size=\"3\" multiple = \"multiple\">\n");
-      out.write("        <option value=\"Polska\">Polska</option>\n");
-      out.write("        <option value=\"Niemcy\">Niemcy</option>\n");
-      out.write("        <option value=\"Anglia\">Anglia</option>\n");
-      out.write("        <option value=\"Hiszpania\">Hiszpania</option>\n");
-      out.write("      \t</select>\n");
-      out.write("\t\t\n");
-      out.write("\t\t\n");
+      out.write("\t\t<select size=\"3\" name=\"kraj\" multiple=\"multiple\">\n");
+      out.write("  \t\t");
+
+  			for (KrajEnum e: KrajEnum.values())
+  				out.print("<option value=" + e.toString() + ">" + e.toString() + "</option>");
+		
+      out.write("\n");
+      out.write("\t\t</select>\n");
       out.write("\t\t<br/>Plec druzyny:<br/>\n");
-      out.write("  \t\t<input type=\"radio\" name=\"plec\" value=\"meska\">Meska druzyna<br/>\n");
-      out.write("  \t\t<input type=\"radio\" name=\"plec\" value=\"kobieca\">Kobieca druzyna<br/>\n");
+      out.write("  \t\t");
+
+      		for(PlecEnum e: PlecEnum.values())         
+      		out.print("<input type='radio' name='plec' value=" + e.toString() + ">" + e.toString() + "<br />");
+      	
+      out.write("\n");
       out.write("\t\n");
       out.write("\t\n");
       out.write("\t\n");
@@ -139,11 +150,12 @@ public final class getDruzyny_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  \t\t\n");
       out.write("  \t\t\n");
       out.write("  \t\tOsiagncia:<br/>\n");
-      out.write("  \t\t<input type=\"checkbox\" name=\"osiagniecia\" value=\"Mistrzostwo kraju\">Mistrzostwo kraju<br/>\n");
-      out.write("  \t\t<input type=\"checkbox\" name=\"osiagniecia\" value=\"Puchar kraju\">Puchar kraju<br/>\n");
-      out.write("  \t\t<input type=\"checkbox\" name=\"osiagniecia\" value=\"Puchar Ligi Europejskiej\">Puchar Ligi Europejskiej<br/>\n");
-      out.write("  \t\t<input type=\"checkbox\" name=\"osiagniecia\" value=\"Puchar Ligi Mistrzow\">Puchar Ligi Mistrzow<br/>\n");
-      out.write("  \t\t\n");
+      out.write("  \t\t");
+
+    		for(OsiagnieciaEnum e: OsiagnieciaEnum.values())         
+      			out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + ">" + e.toString() +"<br /> ");
+     	
+      out.write("\n");
       out.write("  \t\n");
       out.write("  \t\t\n");
       out.write("  \t\t <br /> \n");

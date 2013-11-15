@@ -1,6 +1,53 @@
 package com.example.servletjspdemo.domain;
 
 public class Druzyny {
+
+	public enum KrajEnum {
+		POLSKA ("Polska"),
+		NIEMCY ("Niemcy"),
+		ANGLIA ("Anglia"),
+		FRANCJA ("Francja"),
+		WLOCHY ("Wlochy");
+		private final String opis;
+        KrajEnum(String opis) {
+                this.opis = opis;
+        }
+        
+        public String toString() {
+                 return opis;
+        }	
+	}
+	public enum OsiagnieciaEnum {
+		MISTRZOSTWO ("Mistrzostwo_kraju"),
+		PUCHAR ("Puchar_kraju"),
+		EUROPEJSKA ("Puchar_ligi_Europejskiej"),
+		MISTRZOW ("Puchar_ligi_Mistrzow");
+		private final String opis;
+		
+		OsiagnieciaEnum(String opis) {
+			this.opis = opis;
+		}
+      
+		public String toString() {
+			return opis;
+		}
+	}
+	public enum PlecEnum {
+		KOBIECA ("Kobieca"),
+		MESKA ("Meska"),
+		MIESZANA ("Mieszana");
+		private final String opis;
+		PlecEnum(String opis) {
+			this.opis = opis;
+		}
+      
+		public String toString() {
+			return opis;
+		}
+	}
+	
+	
+	
 	
 	public Druzyny(){	
 

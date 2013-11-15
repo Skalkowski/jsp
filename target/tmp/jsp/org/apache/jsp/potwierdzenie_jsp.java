@@ -3,11 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import com.example.servletjspdemo.domain.Druzyny.OsiagnieciaEnum;
-import com.example.servletjspdemo.domain.Druzyny.KrajEnum;
-import com.example.servletjspdemo.domain.Druzyny.PlecEnum;
 
-public final class addDruzyny_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class potwierdzenie_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -45,9 +42,6 @@ public final class addDruzyny_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
       out.write("<html>\n");
       out.write("<head>\n");
@@ -77,85 +71,40 @@ public final class addDruzyny_jsp extends org.apache.jasper.runtime.HttpJspBase
       }
       out.write("\n");
       out.write("<h2>Dane ktore wprowadziles:</h2>\n");
-      out.write("\t<form action=\"getDruzynyTemp.jsp\" method=\"get\">\n");
-      out.write("\t\tNazwa druzyny :<input type=\"text\" name=\"nazwa\" value=\"");
+      out.write("\t\n");
+      out.write("\t<p>Nazwa druzyny: ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${druzyny.nazwa}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" /><br/>\n");
-      out.write("  \t\tTrener :<input type=\"text\" name=\"trener\" value=\"");
+      out.write("</p> \n");
+      out.write("\t<p>Trener: ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${druzyny.trener}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" /><br/>\n");
-      out.write("  \t\tStadion :<input type=\"text\" name=\"stadion\" value=\"");
+      out.write(" </p>\n");
+      out.write("\t<p>Stadion: ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${druzyny.stadion}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" /> <br/>\n");
-      out.write("  \t\tRok zalozenia :<input type=\"text\"  name=\"rok\" value=\"");
+      out.write("</p> \t\n");
+      out.write("\t<p>Rok założenia: ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${druzyny.rok}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" /><br/>\n");
-      out.write("  \t\t<p>Plec:</p>\n");
-      out.write("  \t\t");
-
-      		String cos = druzyny.getPlec();
-			for(PlecEnum e: PlecEnum.values()){
-          	if(e.toString().equals(cos))
-         		out.println("<input type='radio' name='plec' value=" + e.toString() + " CHECKED >" + e.toString() + "<br />");
-          	else
-             	out.println("<input type='radio' name='plec' value=" + e.toString() + ">" + e.toString() + "<br />");
-                                }
-      	
-      out.write("\n");
-      out.write("  \t\t<br/>\n");
-      out.write("\t<p>Zdobyte osiagniecia:\n");
-      out.write("\t");
-
-   	boolean znaleziono = false;
-  	String[] equ = druzyny.getOsiagniecia();
-	for (OsiagnieciaEnum e : OsiagnieciaEnum.values()) {
-   		for (int i = 0; i < equ.length; i++)
-    		if (equ[i].equals(e.toString())) {
-         		out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + " CHECKED>" + e.toString() + "<br /> ");
-                znaleziono = true;
-         	}
-            if (!znaleziono)
-          		out.print("<input type='checkbox' name='osiagniecia' value=" + e.toString() + ">" + e.toString() + "<br /> ");
-				znaleziono = false;
-         	}
-   	
-      out.write("\n");
-      out.write("\t</p>\n");
-      out.write("\t<p>Kraj:<br/>\n");
-      out.write("\t<select size=\"3\" name=\"kraj\" multiple=\"multiple\">\n");
-      out.write("\t");
-
- 		boolean znale = false;
-     	String[] cap = druzyny.getKraj();
-		for (KrajEnum e : KrajEnum.values()) {
-   			for (int i = 0; i < cap.length; i++)
-          		if (cap[i].equals(e.toString())) {
-              		out.print("<option SELECTED value=" + e.toString() + ">" + e.toString() + "</option>");
-                    znale = true;
-           		}
-				if (!znale)
-             		out.print("<option value=" + e.toString() + ">" + e.toString() + "</option>");
-					znale = false;
-
-    	}
- 	
-      out.write("\n");
-      out.write(" \t</select>\n");
-      out.write(" \t<br/>\n");
+      out.write("</p>\n");
+      out.write("\t<p>Plec druzyny: ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${druzyny.plec}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</p> \n");
+      out.write("\t<p>Zdobyte osiagniecia:  ");
+ out.println(druzyny.toString(druzyny.getOsiagniecia())); 
+      out.write("</p>\n");
+      out.write("\t<p>Kraj: ");
+ out.println(druzyny.toString(druzyny.getKraj())); 
+      out.write("</p>\n");
       out.write("\t\n");
-      out.write("\t</p>\n");
-      out.write("\t<p>Komentarz:</p>\n");
-      out.write("\t<textarea name=\"komentarz\" rows=\"10\" cols=\"90\" >\n");
-      out.write("\t\t\t\t");
+      out.write("\t\n");
+      out.write("\t\n");
+      out.write("\t<p>Komentarz: ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${druzyny.komentarz}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</p>\n");
+      out.write("\t<form action=\"showAllDruzyny.jsp\" method=\"get\">\n");
+      out.write("\t\t");
+storage.add(druzyny); 
       out.write("\n");
-      out.write("\t</textarea>\n");
-      out.write("\t<br/>\n");
-      out.write("\t<input type=\"submit\" value=\"potwierdz\">\n");
+      out.write(" \t\t<input type=\"submit\" value=\"pokaz wszystko\">  \n");
       out.write("\t</form>\n");
-      out.write("\t\n");
-      out.write("\t\n");
-      out.write("\t\n");
       out.write("\t<form action=\"indexdruzyny.jsp\">\n");
       out.write("  \t\t<input type=\"submit\" value=\"wroc\">\n");
       out.write("  \t</form>\n");
